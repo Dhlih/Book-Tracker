@@ -7,14 +7,23 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('auth.register');
 });
 
-Route::get('/dashboard', action: function () {
-    return view('dashboard');
+Route::get('/books', function () {
+    return view('books.books');
 });
+
+Route::get('/books/reading', function () {
+    return view('books.books-reading');
+});
+
+Route::get('/books/read', function () {
+    return view('books.books-read');
+});
+
 
