@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <div class="flex space-x-[1.5rem]">
-        <aside class="w-full max-w-[250px] text-white h-screen px-[1.5rem] py-[2rem] bg-[#AD49E1]">
+    <div class="flex space-x-[1.5rem] ">
+        <aside
+            class="w-full fixed bottom-0 left-0 top-0 flex flex-col justify-between max-w-[250px] text-white min-h-screen px-[1.5rem] py-[2rem] bg-[#AD49E1]">
             <div class="flex items-center space-x-[0.8rem] mb-[1.5rem]">
                 <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     fill="currentColor" viewBox="0 0 24 24">
@@ -37,10 +38,10 @@
                     <a href="/books/reading" class="block">Books Reading</a>
                 </li>
             </ul>
-
+            <button class="w-full rounded-md p-[0.5rem] font-semibold mt-auto bg-[#2E073F]">Logout</button>
         </aside>
 
-        <main class="w-full p-[2rem]">
+        <main class="w-full ml-[16rem] p-[2rem]">
             {{ $slot }}
         </main>
     </div>

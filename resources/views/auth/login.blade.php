@@ -36,9 +36,20 @@
                         placeholder="Type your password...">
                 </div>
 
+                {{-- error status --}}
+                @if ($errors->any())
+                    <div class="text-red-500">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
 
                 <button type="submit"
-                    class="rounded-md w-full mt-[1rem] text-black font-semibold p-[0.5rem] bg-[#EBD3F8]">Login</button>
+                    class="rounded-md w-full mt-[1rem] text-black font-semibold p-[0.5rem] bg-[#EBD3F8]">Register</button>
             </form>
             <span class="block mt-[1rem]">Don't have an account ?
                 <a href="/register" class="hover:font-semibold">Register</a>

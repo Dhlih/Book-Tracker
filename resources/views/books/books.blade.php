@@ -6,7 +6,7 @@
         <button class="bg-[#EBD3F8] rounded-md py-[0.5rem] px-[0.8rem] cursor-pointer">Search</button>
     </div>
     <div class="books-container mt-[1.5rem] flex flex-wrap gap-6 ">
-        <div class="w-full max-w-[280px] shadow-md rounded-md p-[1rem]">
+        <div class="w-full max-w-[280px]  rounded-md p-[1rem] shadow-lg">
             <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full h-[200px] rounded-md"
                 alt="Harry Potter">
             <div class="flex items-center justify-between mt-[1rem]">
@@ -28,7 +28,7 @@
             <p class="text-sm mt-[0.5rem] text-gray-500">Last read: 2 Oct 2025</p>
         </div>
 
-        <div class="w-full max-w-[280px] shadow-md rounded-md p-[1rem]">
+        <div class="w-full max-w-[280px]  rounded-md p-[1rem] shadow-lg">
             <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full h-[200px] rounded-md"
                 alt="Harry Potter">
             <div class="flex items-center justify-between mt-[1rem]">
@@ -50,7 +50,7 @@
             <p class="text-sm mt-[0.5rem] text-gray-500">Last read: 2 Oct 2025</p>
         </div>
 
-        <div class="w-full max-w-[280px] shadow-md rounded-md p-[1rem]">
+        <div class="w-full max-w-[280px]  rounded-md p-[1rem] shadow-lg">
             <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full h-[200px] rounded-md"
                 alt="Harry Potter">
             <div class="flex items-center justify-between mt-[1rem]">
@@ -71,5 +71,6 @@
             </div>
             <p class="text-sm mt-[0.5rem] text-gray-500">Last read: 2 Oct 2025</p>
         </div>
+
     </div>
 </x-layout>
