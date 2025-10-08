@@ -24,36 +24,35 @@
 
         <div class="w-full max-w-xs rounded-md shadow-md p-[1.5rem] bg-[#AD49E1] text-white">
             <h2 class="font-bold text-2xl mb-[1rem]">Login</h2>
-            <form action="" class="flex flex-col space-y-[1rem]">
+            <form action="/login" method="POST" class="flex flex-col space-y-[1rem]">
+                @csrf
                 <div class="flex flex-col space-y-[0.5rem]">
                     <label for="" class="font-semibold ">Email :</label>
-                    <input type="text" class="bg-white text-black rounded-md p-[0.5rem]"
+                    <input type="text" class="bg-white text-black rounded-md p-[0.5rem]" name="email"
                         placeholder="Type your email...">
                 </div>
                 <div class="flex flex-col space-y-[0.5rem]">
                     <label for="" class="font-semibold ">Password :</label>
-                    <input type="text" class="bg-white text-black rounded-md p-[0.5rem]"
+                    <input type="text" class="bg-white text-black rounded-md p-[0.5rem]" name="password"
                         placeholder="Type your password...">
                 </div>
 
-                {{-- error status --}}
-                @if ($errors->any())
-                    <div class="text-red-500">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-
                 <button type="submit"
-                    class="rounded-md w-full mt-[1rem] text-black font-semibold p-[0.5rem] bg-[#EBD3F8]">Register</button>
+                    class="rounded-md w-full mt-[1rem] cursor-pointer text-black font-semibold p-[0.5rem] bg-[#EBD3F8] hover:bg-[#EBD3F8]/70">Login</button>
             </form>
             <span class="block mt-[1rem]">Don't have an account ?
                 <a href="/register" class="hover:font-semibold">Register</a>
             </span>
+            {{-- error status --}}
+            @if ($errors->any())
+                <div class="text-red-500 mt-[0.5rem]">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>*{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
 
     </div>

@@ -24,7 +24,7 @@
 
         <div class="w-full max-w-xs rounded-md shadow-md p-[1.5rem] bg-[#AD49E1] text-white">
             <h2 class="font-bold text-2xl mb-[1rem]">Register</h2>
-            <form action="/login" method="POST" class="flex flex-col space-y-[1rem]">
+            <form action="/register" method="POST" class="flex flex-col space-y-[1rem]">
                 @csrf
                 <div class="flex flex-col space-y-[0.5rem]">
                     <label for="" class="font-semibold">Email :</label>
@@ -37,24 +37,21 @@
                         placeholder="Type your password...">
                 </div>
 
-                {{-- error status --}}
-                @if ($errors->any())
-                    <div class="text-red-400">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>*{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-
                 <button type="submit"
-                    class="rounded-md w-full mt-[1rem] text-black font-semibold p-[0.5rem] bg-[#EBD3F8] hover:bg-[#EBD3F8]/70">Register</button>
+                    class="rounded-md w-full mt-[1rem] cursor-pointer text-black font-semibold p-[0.5rem] bg-[#EBD3F8] hover:bg-[#EBD3F8]/70">Register</button>
             </form>
             <span class="block mt-[1rem]">Already have an account ?
                 <a href="/login" class="hover:font-semibold">Login</a>
             </span>
+            @if ($errors->any())
+                <div class="text-red-500 mt-[0.5rem]">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>*{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
 
     </div>

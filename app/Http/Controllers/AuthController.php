@@ -29,12 +29,9 @@ class AuthController extends Controller
 
         if ($user) {
             return redirect("/books")->with("success", "Berhasil melakukan login");
-        } else {
-            $validated = $request->validate([
-                "email" => "required|email",
-                "password" => "required|min:6"
-            ]);
         }
+
+        // return back()->with("error", "Gagal melakukan login");
     }
 
 
@@ -45,14 +42,21 @@ class AuthController extends Controller
             "password" => "required|min:6"
         ]);
 
-
-
         $user = User::create($validated);
 
         if ($user) {
             return redirect("/login")->with("success", "Berhasil melakukan registrasi");
-        } else {
-            return back()->with("error", "Gagal melakukan registrasi");
         }
+
+        // return back()->with("error", "Gagal melakukan registrasi");
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect("/login");
     }
 }
