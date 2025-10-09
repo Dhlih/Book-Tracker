@@ -28,10 +28,10 @@ class AuthController extends Controller
         $user = Auth::attempt($validated);
 
         if ($user) {
-            return redirect("/books")->with("success", "Berhasil melakukan login");
+            return redirect("/books")->with("success", "Login successfull");
         }
 
-        // return back()->with("error", "Gagal melakukan login");
+        return back()->with("error", "Login Failed");
     }
 
 
@@ -45,10 +45,10 @@ class AuthController extends Controller
         $user = User::create($validated);
 
         if ($user) {
-            return redirect("/login")->with("success", "Berhasil melakukan registrasi");
+            return redirect("/login")->with("success", "Register successfull");
         }
 
-        // return back()->with("error", "Gagal melakukan registrasi");
+        return back()->with("error", "Register failed");
     }
 
     public function logout(Request $request)

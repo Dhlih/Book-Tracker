@@ -1,5 +1,6 @@
 <x-layout>
     <h1 class="font-bold text-3xl mb-[1.5rem] ">All Books</h1>
+    {{-- search book --}}
     <div class="flex items-center space-x-[1rem]">
         <input type="text"
             class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none"
@@ -13,34 +14,66 @@
 
         </button>
     </div>
+
     <div class="books-container mt-[1.5rem] flex flex-wrap gap-6 mb-[5rem]">
-        <div class="w-full md:max-w-[280px]  rounded-md p-[1rem] shadow-lg">
-            <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full md:h-[200px] h-[250px] rounded-md"
-                alt="Harry Potter">
-            <div class="flex items-center justify-between mt-[1rem]">
-                <h2 class="text-xl font-bold">Lorem Ipsum</h2>
-                <a href="">
-                    <button class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm">Reading</button>
-                </a>
-            </div>
-            <p class="text-md  text-gray-500">J.K Rowling</p>
-            <div class="mt-[0.3rem]">
-                <div class="flex items-center justify-between">
-                    <p class="text-sm text-gray-500 mt-1">Page 101 / 303</p>
-                    <p class="text-sm text-gray-500 mt-1">30%</p>
+        @foreach ($posts as $post)
+            <div class="w-full md:max-w-[280px]  rounded-md p-[1rem] shadow-lg">
+                <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full md:h-[200px] h-[250px] rounded-md"
+                    alt="Harry Potter">
+                <div class="flex items-center justify-between mt-[1rem]">
+                    <h2 class="text-xl font-bold">{{ $post->title }}</h2>
+                    <a href="">
+                        <button class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm">{{ $post->status }}</button>
+                    </a>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
-                    <div class="bg-purple-600 h-2 rounded-full" style="width: 33%"></div>
+                <p class="text-md  text-gray-500">{{ $post->author }}</p>
+                <div class="mt-[0.3rem]">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm text-gray-500 mt-1">{{ $post->total_page }}</p>
+                        <p class="text-sm text-gray-500 mt-1">30%</p>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div class="bg-purple-600 h-2 rounded-full" style="width: 33%"></div>
+                    </div>
                 </div>
+                <p class="text-sm mt-[0.5rem] text-gray-500">{{ $post->last_read_at }}</p>
             </div>
-            <p class="text-sm mt-[0.5rem] text-gray-500">Last read: 2 Oct 2025</p>
-        </div>
+        @endforeach
     </div>
-    <button class="fixed right-12 bottom-25 md:bottom-12 rounded-full p-[0.5rem] font-semibold bg-[#2E073F]">
+
+    {{-- add book button --}}
+    <button
+        class="fixed right-12 bottom-25 md:bottom-12 rounded-full p-[0.5rem] font-semibold bg-[#2E073F] hover:bg-[#2E073F]/70 cursor-pointer "
+        onclick="toggleModal()">
         <svg class="w-8 h-8 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M5 12h14m-7 7V5" />
         </svg>
     </button>
+
+    {{-- modal --}}
+    <div class="modal fixed inset-0 hidden justify-center items-center">
+        <div class="shadow-lg rounded-md max-w-sm bg-[#AD49E1] p-[1.5rem]">
+            <h2>Add book</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quam?</p>
+        </div>
+    </div>
+
+    <script>
+        let showModal = false;
+        const modal = document.querySelector(".modal");
+
+        const toggleModal = () => {
+            showModal = !showModal;
+
+            if (showModal) {
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+            } else {
+                modal.classList.remove("flex");
+                modal.classList.add("hidden");
+            }
+        }
+    </script>
 </x-layout>

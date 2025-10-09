@@ -52,8 +52,8 @@
         <nav class="w-full md:hidden fixed bottom-0 left-0 right-0 px-[2rem] py-[0.5rem] bg-[#AD49E1] text-white">
             <ul class="flex justify-between items-center space-x-[2rem]">
                 <li
-                    class="flex flex-col space-y-[0.3rem] justify-center items-center rounded-md font-semibold cursor-pointer {{ request()->is('books') ? 'bg-[#7A1CAC]' : '' }}">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                    class="flex flex-col space-y-[0.2rem] justify-center items-center rounded-md font-semibold cursor-pointer {{ request()->is('books') ? 'bg-[#7A1CAC] px-[0.5rem]' : '' }}">
+                    <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -64,8 +64,8 @@
                     <a href="/books" class="block text-center md:text-left">All </a>
                 </li>
                 <li
-                    class="flex flex-col space-y-[0.3rem] justify-center items-center  rounded-md font-semibold cursor-pointer {{ request()->is('books') ? 'bg-[#7A1CAC]' : '' }}">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                    class="flex flex-col space-y-[0.2rem] justify-center items-center  rounded-md font-semibold cursor-pointer {{ request()->is('books/read') ? 'bg-[#7A1CAC] px-[0.5rem]' : '' }}">
+                    <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,8 +76,8 @@
                     <a href="/books/read" class="block text-center md:text-left">Read</a>
                 </li>
                 <li
-                    class="flex flex-col space-y-[0.3rem] justify-center items-center  rounded-md font-semibold cursor-pointer {{ request()->is('books') ? 'bg-[#7A1CAC]' : '' }}">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                    class="flex flex-col space-y-[0.2rem] justify-center items-center  rounded-md font-semibold cursor-pointer {{ request()->is('books/reading') ? 'bg-[#7A1CAC] px-[0.5rem]' : '' }}">
+                    <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2"

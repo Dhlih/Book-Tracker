@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\BooksController;
 
 Route::get('/', function () {
     return Auth::check() ? redirect("/books") : redirect("/login");
@@ -23,22 +25,15 @@ Route::middleware("guest")->group(
 
 # auth route
 Route::middleware("auth")->group(function () {
-    Route::get('/books', function () {
-        return view('books.books');
-    });
-    Route::get('/books/read', function () {
-        return view('books.books-read');
-    });
-    Route::get('/books/reading', function () {
-        return view('books.books-reading');
-    });
-    Route::get('/books/read', function () {
-        return view('books.books-read');
-    });
+    Route::get('/books', [BooksController::class, "show_books"]);
 
-    Route::get('/books', function () {
-        return view('books.books');
-    });
+    Route::get('/books/read', [BooksController::class, "show_books_read"]);
+
+    Route::get('/books/reading', [BooksController::class, "show_books_reading"]);
+
+    Route::get('/books/read', [BooksController::class, "show_books_read"]);
+
+    Route::post('/books', [BooksController::class, "add_book"]);
 
     Route::post('/logout', [AuthController::class, "logout"]);
 });
