@@ -1,5 +1,5 @@
 <x-layout>
-    <h1 class="font-bold text-3xl mb-[1.5rem] ">Books Read</h1>
+    <h1 class="font-bold text-3xl mb-[1.5rem] ">Books Reading</h1>
     <div class="flex items-center space-x-[1rem]">
         <input type="text"
             class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none"
@@ -36,11 +36,5 @@
             <p class="text-sm mt-[0.5rem] text-gray-500">Last read: 2 Oct 2025</p>
         </div>
     </div>
-    <button class="fixed right-12 bottom-25 md:bottom-12 rounded-full p-[0.5rem] font-semibold bg-[#2E073F]">
-        <svg class="w-8 h-8 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 12h14m-7 7V5" />
-        </svg>
-    </button>
+
 </x-layout>

@@ -25,10 +25,16 @@ class AuthController extends Controller
             "password" => "required|min:6"
         ]);
 
+        $user_exist = User::where("email", $request->email)->first();
+
+        if (!$user_exist) {
+            return back()->with("error", "Cannot find account");
+        }
+
         $user = Auth::attempt($validated);
 
         if ($user) {
-            return redirect("/books")->with("success", "Login successfull");
+            return redirect("/books/index")->with("success", "Login successfull");
         }
 
         return back()->with("error", "Login Failed");

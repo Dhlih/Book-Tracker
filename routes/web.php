@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookController;
 use App\Http\Controllers\BooksController;
 
 Route::get('/', function () {
@@ -25,7 +24,9 @@ Route::middleware("guest")->group(
 
 # auth route
 Route::middleware("auth")->group(function () {
-    Route::get('/books', [BooksController::class, "show_books"]);
+    Route::get('/books/index', [BooksController::class, "show_books"]);
+
+    Route::get('/books/{type}/search', [BooksController::class, "search"]);
 
     Route::get('/books/read', [BooksController::class, "show_books_read"]);
 
@@ -33,7 +34,10 @@ Route::middleware("auth")->group(function () {
 
     Route::get('/books/read', [BooksController::class, "show_books_read"]);
 
+    Route::get('/books/create', [BooksController::class, "show_books_create"]);
+
     Route::post('/books', [BooksController::class, "add_book"]);
+
 
     Route::post('/logout', [AuthController::class, "logout"]);
 });
