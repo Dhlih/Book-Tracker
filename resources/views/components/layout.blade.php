@@ -26,20 +26,20 @@
 
             <ul class="flex flex-col space-y-[1.5rem]">
                 <li
-                    class=" p-[0.5rem] rounded-md font-semibold cursor-pointer {{ request()->is('books') ? 'bg-[#7A1CAC]' : '' }}">
-                    <a href="/books" class="block">All Books</a>
+                    class=" p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books') ? 'bg-[#7A1CAC]' : '' }}">
+                    <a href="/books/index" class="block">All Books</a>
                 </li>
                 <li
-                    class="p-[0.5rem] rounded-md font-semibold cursor-pointer {{ request()->is('books/read') ? 'bg-[#7A1CAC]' : '' }}">
-                    <a href="/books/read" class="block">Books Read</a>
+                    class="p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books/read') ? 'bg-[#7A1CAC]' : '' }}">
+                    <a href="/books/finished" class="block">Books Finished</a>
                 </li>
                 <li
-                    class="p-[0.5rem] rounded-md font-semibold cursor-pointer {{ request()->is('books/reading') ? 'bg-[#7A1CAC]' : '' }}">
+                    class="p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books/reading') ? 'bg-[#7A1CAC]' : '' }}">
                     <a href="/books/reading" class="block">Books Reading</a>
                 </li>
                 <li
-                    class=" p-[0.5rem] rounded-md font-semibold cursor-pointer {{ request()->is('books/create') ? 'bg-[#7A1CAC]' : '' }}">
-                    <a href="/books/create" class="block">Add Book</a>
+                    class=" p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books/create') ? 'bg-[#7A1CAC]' : '' }}">
+                    <a href="/books/add" class="block">Add Book</a>
                 </li>
             </ul>
             <form action="/logout" class="mt-auto" method="POST">
@@ -63,7 +63,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
                     </svg>
-                    <a href="/books" class="block text-center md:text-left">All </a>
+                    <a href="/books/index" class="block text-center md:text-left">All </a>
                 </li>
 
                 <li

@@ -1,7 +1,7 @@
 <x-layout>
-    <h1 class="font-bold text-3xl mb-[1.5rem] ">All Books</h1>
+    <h1 class="font-bold text-3xl mb-[1.5rem] ">Finished Books</h1>
     {{-- search book --}}
-    <form action="/books/index/search" method="GET">
+    <form action="/books/finished/search" method="GET">
         <div class="flex items-center space-x-[1rem]">
             <input type="text" name="q"
                 class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none"

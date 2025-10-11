@@ -24,20 +24,19 @@ Route::middleware("guest")->group(
 
 # auth route
 Route::middleware("auth")->group(function () {
-    Route::get('/books/index', [BooksController::class, "show_books"]);
+    Route::get('/books/index', [BooksController::class, "show_books_index"]);
 
-    Route::get('/books/{type}/search', [BooksController::class, "search"]);
-
-    Route::get('/books/read', [BooksController::class, "show_books_read"]);
+    Route::get('/books/finished', [BooksController::class, "show_books_finished"]);
 
     Route::get('/books/reading', [BooksController::class, "show_books_reading"]);
 
     Route::get('/books/read', [BooksController::class, "show_books_read"]);
 
-    Route::get('/books/create', [BooksController::class, "show_books_create"]);
+    Route::get('/books/add', [BooksController::class, "show_add_book"]);
 
-    Route::post('/books', [BooksController::class, "add_book"]);
+    Route::get('/books/{type}/search', [BooksController::class, "search"]);
 
+    Route::post('/books/add', [BooksController::class, "add_book"]);
 
     Route::post('/logout', [AuthController::class, "logout"]);
 });

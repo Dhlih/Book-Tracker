@@ -8,20 +8,28 @@ use Illuminate\Support\Facades\Auth;
 
 class BooksController extends Controller
 {
-    public function show_books()
+    public function show_books_index()
     {
-        $books = Book::all();
-        return view("books.index", ["posts" => $books]);
+        $user_id = Auth::id();
+        $books = Book::where("user_id", $user_id)->get();
+
+        return view("books.index", ["books" => $books]);
     }
 
-    public function show_books_read()
+    public function show_books_finished(Request $request)
     {
-        return view("books.read");
+        $user_id = Auth::id();
+        $books = Book::where("user_id", $user_id)->where("status", "finished")->get();
+
+        return view("books.finished", ["books" => $books]);
     }
 
     public function show_books_reading()
     {
-        return view("books.reading");
+        $user_id = Auth::id();
+        $books = Book::where("user_id", $user_id)->where("status", "reading")->get();
+
+        return view("books.reading", ["books" => $books]);
     }
 
     public function add_book(Request $request)
@@ -59,9 +67,9 @@ class BooksController extends Controller
         return back()->with("error", "Failed to delete book");
     }
 
-    public function show_books_create()
+    public function show_add_book()
     {
-        return view("books.create");
+        return view("books.add");
     }
 
     public function search(Request $request, $type)
@@ -69,7 +77,16 @@ class BooksController extends Controller
         $keyword = $request->q;
         $user_id = Auth::id();
 
-        $books = Book::where("title", "like", "%{$keyword}%")->where("user_id", $user_id)->get();
+        if ($keyword) {
+            if ($type != "index") {
+                $books = Book::where("title", "like", "%{$keyword}%")->where("status", $type)->where("user_id", $user_id)->get();
+                // dd($books);
+            } else {
+                $books = Book::where("title", "like", "%{$keyword}%")->where("user_id", $user_id)->get();
+            }
+        } else {
+            $books = Book::where("user_id", $user_id)->get();
+        }
 
         if ($books->isEmpty()) {
             return view("books.{$type}", [
