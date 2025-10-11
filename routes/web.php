@@ -32,11 +32,15 @@ Route::middleware("auth")->group(function () {
 
     Route::get('/books/read', [BooksController::class, "show_books_read"]);
 
+    Route::get('/books/update/{id}', [BooksController::class, "show_update_book"]);
+
     Route::get('/books/add', [BooksController::class, "show_add_book"]);
 
-    Route::get('/books/{type}/search', [BooksController::class, "search"]);
+    // Route::put('/books/update', [BooksController::class, "update_book"]);
 
     Route::post('/books/add', [BooksController::class, "add_book"]);
+
+    Route::get('/books/{type}/search', [BooksController::class, "search"]);
 
     Route::post('/logout', [AuthController::class, "logout"]);
 });

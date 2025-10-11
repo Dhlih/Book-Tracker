@@ -4,7 +4,7 @@
         <input type="text"
             class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none"
             placeholder="Search book...">
-        <button class="bg-[#EBD3F8] rounded-md py-[0.4rem] px-[0.8rem] cursor-pointer">
+        <button class="bg-[#EBD3F8]  hover:bg-[#EBD3F8]/70 rounded-md py-[0.4rem] px-[0.8rem] cursor-pointer">
             <svg class="w-6 h-6 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="26"
                 height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2"

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BooksController extends Controller
 {
+    // show page
     public function show_books_index()
     {
         $user_id = Auth::id();
@@ -32,6 +33,18 @@ class BooksController extends Controller
         return view("books.reading", ["books" => $books]);
     }
 
+    public function show_add_book()
+    {
+        return view("books.add");
+    }
+
+    public function show_update_book($id)
+    {
+        $book = Book::find($id);
+        return view("books.update", ["book" => $book]);
+    }
+
+    // crud
     public function add_book(Request $request)
     {
         $user_id = Auth::id();
@@ -67,10 +80,7 @@ class BooksController extends Controller
         return back()->with("error", "Failed to delete book");
     }
 
-    public function show_add_book()
-    {
-        return view("books.add");
-    }
+
 
     public function search(Request $request, $type)
     {
@@ -96,4 +106,6 @@ class BooksController extends Controller
 
         return view("books.{$type}", ["books" => $books]);
     }
+
+    // public function update_book(Request $request) {}
 }

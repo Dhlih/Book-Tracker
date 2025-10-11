@@ -5,25 +5,25 @@
             @csrf
             <div class="flex flex-col space-y-[0.5rem]">
                 <label for="cover">Title</label>
-                <input name="title" class="w-full bg-white rounded-md p-[0.5rem] outline-2"
+                <input name="title" class="w-full bg-[#EBD3F8] rounded-md p-[0.5rem] "
                     placeholder="Example : Harry Potter">
             </div>
 
             <div class="flex flex-col space-y-[0.5rem]">
                 <label for="author">Author</label>
-                <input name="author" class="w-full bg-white rounded-md p-[0.5rem] outline-2"
+                <input name="author" class="w-full bg-[#EBD3F8] rounded-md p-[0.5rem] "
                     placeholder="Example : JK. Rowling">
             </div>
 
             <div class="flex flex-col space-y-[0.5rem]">
                 <label for="total_page">Total page</label>
-                <input type="number" name="total_page" class="w-full bg-white rounded-md p-[0.5rem] outline-2"
+                <input type="number" name="total_page" class="w-full bg-[#EBD3F8] rounded-md p-[0.5rem] "
                     placeholder="Example : 500">
             </div>
 
             <div class="flex flex-col space-y-[0.5rem]">
                 <label for="status">Status</label>
-                <select name="status" id="status" class="w-full bg-white rounded-md p-[0.5rem] outline-2">
+                <select name="status" id="status" class="w-full bg-[#EBD3F8] rounded-md p-[0.5rem] ">
                     <option value="">-- Pilih Status --</option>
                     <option value="read">Read</option>
                     <option value="reading">Reading</option>
@@ -32,7 +32,7 @@
 
             <div class="flex flex-col space-y-[0.5rem]">
                 <label for="cover">Cover</label>
-                <input name="cover" class="w-full  rounded-md p-[0.5rem] outline-2">
+                <input name="cover" class="w-full  rounded-md p-[0.5rem] bg-[#EBD3F8] ">
             </div>
 
 

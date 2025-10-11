@@ -6,7 +6,8 @@
             <input type="text" name="q"
                 class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none"
                 placeholder="Search book...">
-            <button class="bg-[#EBD3F8] rounded-md py-[0.4rem] px-[0.8rem] cursor-pointer" type="submit">
+            <button class="bg-[#EBD3F8]  hover:bg-[#EBD3F8]/70 rounded-md py-[0.4rem] px-[0.8rem] cursor-pointer"
+                type="submit">
                 <svg class="w-6 h-6 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="26"
                     height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
@@ -29,7 +30,9 @@
                     <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full md:h-[200px] h-[250px] rounded-md"
                         alt="Harry Potter">
                     <div class="flex items-center justify-between mt-[1rem]">
-                        <h2 class="text-xl font-bold">{{ $book->title }}</h2>
+                        <a href="/books/update/{{ $book->id }}">
+                            <h2 class="text-xl font-bold hover:text-gray-500">{{ $book->title }}</h2>
+                        </a>
                         <a href="">
                             <button class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm">{{ $book->status }}</button>
                         </a>

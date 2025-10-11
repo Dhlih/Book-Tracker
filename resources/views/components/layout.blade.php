@@ -27,15 +27,15 @@
             <ul class="flex flex-col space-y-[1.5rem]">
                 <li
                     class=" p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books') ? 'bg-[#7A1CAC]' : '' }}">
-                    <a href="/books/index" class="block">All Books</a>
+                    <a href="/books/index" class="block">All</a>
                 </li>
                 <li
                     class="p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books/read') ? 'bg-[#7A1CAC]' : '' }}">
-                    <a href="/books/finished" class="block">Books Finished</a>
+                    <a href="/books/finished" class="block">Finished</a>
                 </li>
                 <li
                     class="p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books/reading') ? 'bg-[#7A1CAC]' : '' }}">
-                    <a href="/books/reading" class="block">Books Reading</a>
+                    <a href="/books/reading" class="block">Reading</a>
                 </li>
                 <li
                     class=" p-[0.5rem] rounded-md font-semibold cursor-pointer hover:bg-[#7A1CAC] {{ request()->is('books/create') ? 'bg-[#7A1CAC]' : '' }}">
