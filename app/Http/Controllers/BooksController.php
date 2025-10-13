@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class BooksController extends Controller
 {
@@ -40,8 +42,8 @@ class BooksController extends Controller
 
     public function show_update_book($id)
     {
-        $book = Book::find($id);
-        return view("books.update", ["book" => $book]);
+        $book = Book::with('logs')->findOrFail($id);
+        return view('books.update', compact('book'));
     }
 
     // crud
@@ -65,7 +67,6 @@ class BooksController extends Controller
             return redirect("/books/index");
         }
 
-
         return back()->withInput()->with("error", "Failed to add book");
     }
 
@@ -80,7 +81,14 @@ class BooksController extends Controller
         return back()->with("error", "Failed to delete book");
     }
 
+    public function update_status(Request $request, $id)
+    {
+        $status = $request->status;
+        $book = Book::findOrFail($id);
+        $book->update(["status" => $status]);
 
+        return back();
+    }
 
     public function search(Request $request, $type)
     {
@@ -107,5 +115,28 @@ class BooksController extends Controller
         return view("books.{$type}", ["books" => $books]);
     }
 
-    // public function update_book(Request $request) {}
+    public function search_google_books(Request $request)
+    {
+        $keyword = $request->q;
+
+        $url = "https://www.googleapis.com/books/v1/volumes?q=intitle:" . urlencode($keyword);
+        $response = Http::get($url);
+        $items = $response->json("items", []);
+        $limited_items = array_slice($items, 0, 5);
+
+        $books = array_map(function ($item) {
+            $info = $item['volumeInfo'] ?? [];
+            $imageLink = $info['imageLinks']['thumbnail'] ?? null;
+            $pageCount = $info['pageCount'];
+
+            return [
+                'title' => $info['title'] ?? 'Unknown Title',
+                'author' => $info['authors'][0] ?? 'Unknown Author',
+                'cover' => $imageLink,
+                'total_page' => $pageCount
+            ];
+        }, $limited_items);
+
+        return response()->json($books);
+    }
 }

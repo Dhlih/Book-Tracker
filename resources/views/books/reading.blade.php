@@ -14,27 +14,34 @@
         </button>
     </div>
     <div class="books-container mt-[1.5rem] flex flex-wrap gap-6 mb-[5rem]">
-        <div class="w-full md:max-w-[280px]  rounded-md p-[1rem] shadow-lg">
-            <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full md:h-[200px] h-[250px] rounded-md"
-                alt="Harry Potter">
-            <div class="flex items-center justify-between mt-[1rem]">
-                <h2 class="text-xl font-bold">Lorem Ipsum</h2>
-                <a href="">
-                    <button class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm">Reading</button>
-                </a>
-            </div>
-            <p class="text-md  text-gray-500">J.K Rowling</p>
-            <div class="mt-[0.3rem]">
-                <div class="flex items-center justify-between">
-                    <p class="text-sm text-gray-500 mt-1">Page 101 / 303</p>
-                    <p class="text-sm text-gray-500 mt-1">30%</p>
+        @isset($books)
+            @foreach ($books as $book)
+                <div class="w-full md:max-w-[280px]  rounded-md p-[1rem] shadow-lg">
+                    <img src={{ $book->cover ?? '' }} class="object-cover w-full md:h-[200px] h-[320px] rounded-md"
+                        alt="Harry Potter">
+                    <div class="flex items-center justify-between mt-[1rem]">
+                        <a href="/books/update/{{ $book->id }}">
+                            <h2 class="text-xl font-bold hover:text-gray-500">{{ $book->title }}</h2>
+                        </a>
+                        <a href="">
+                            <button
+                                class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm capitalize">{{ $book->status }}</button>
+                        </a>
+                    </div>
+                    <p class="text-md  text-gray-500">{{ $book->author }}</p>
+                    <div class="mt-[0.3rem]">
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm text-gray-500 mt-1">{{ $book->total_page }}</p>
+                            <p class="text-sm text-gray-500 mt-1">30%</p>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                            <div class="bg-purple-600 h-2 rounded-full" style="width: 33%"></div>
+                        </div>
+                    </div>
+                    <p class="text-sm mt-[0.5rem] text-gray-500">{{ $book->last_read_at }}</p>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
-                    <div class="bg-purple-600 h-2 rounded-full" style="width: 33%"></div>
-                </div>
-            </div>
-            <p class="text-sm mt-[0.5rem] text-gray-500">Last read: 2 Oct 2025</p>
-        </div>
+            @endforeach
+        @endisset
     </div>
 
 </x-layout>

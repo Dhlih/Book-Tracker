@@ -27,12 +27,13 @@
         @isset($books)
             @foreach ($books as $book)
                 <div class="w-full md:max-w-[280px]  rounded-md p-[1rem] shadow-lg">
-                    <img src="{{ asset('harry-potter.jpg') }}" class="object-cover w-full md:h-[200px] h-[250px] rounded-md"
+                    <img src={{ $book->cover }} class="object-cover w-full md:h-[200px] h-[320px] rounded-md"
                         alt="Harry Potter">
                     <div class="flex items-center justify-between mt-[1rem]">
                         <h2 class="text-xl font-bold">{{ $book->title }}</h2>
                         <a href="">
-                            <button class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm">{{ $book->status }}</button>
+                            <button
+                                class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm capitalize">{{ $book->status }}</button>
                         </a>
                     </div>
                     <p class="text-md  text-gray-500">{{ $book->author }}</p>

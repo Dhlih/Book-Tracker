@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer("total_page");
             $table->string("status");
             $table->string("cover");
-            $table->timestamp("last_read_at")->nullable();
             $table->timestamps();
         });
     }

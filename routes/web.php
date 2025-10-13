@@ -6,41 +6,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BooksController;
 
 Route::get('/', function () {
-    return Auth::check() ? redirect("/books") : redirect("/login");
+    return Auth::check() ? redirect("/books/index") : redirect("/login");
 });
 
 # guest route
-Route::middleware("guest")->group(
-    function () {
-        # get method
-        Route::get('/login', [AuthController::class, "show_login"])->name("login");
-        Route::get('/register', [AuthController::class, "show_register"]);
-
-        # post method
-        Route::post('/login', [AuthController::class, "login"]);
-        Route::post('/register', [AuthController::class, "register"]);
-    }
-);
 
 # auth route
-Route::middleware("auth")->group(function () {
-    Route::get('/books/index', [BooksController::class, "show_books_index"]);
 
-    Route::get('/books/finished', [BooksController::class, "show_books_finished"]);
 
-    Route::get('/books/reading', [BooksController::class, "show_books_reading"]);
-
-    Route::get('/books/read', [BooksController::class, "show_books_read"]);
-
-    Route::get('/books/update/{id}', [BooksController::class, "show_update_book"]);
-
-    Route::get('/books/add', [BooksController::class, "show_add_book"]);
-
-    // Route::put('/books/update', [BooksController::class, "update_book"]);
-
-    Route::post('/books/add', [BooksController::class, "add_book"]);
-
-    Route::get('/books/{type}/search', [BooksController::class, "search"]);
-
-    Route::post('/logout', [AuthController::class, "logout"]);
-});
+require __DIR__ . '/auth.php';
+require __DIR__ . '/logs.php';
+require __DIR__ . '/books.php';
