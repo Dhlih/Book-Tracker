@@ -7,7 +7,7 @@
             <div class="flex items-center justify-between mt-[1rem]">
                 <div>
                     <h2 class="text-2xl font-bold">{{ $book->title }}</h2>
-                    <span class="text-lg">Author : {{ $book->author }}</span>
+                    <span class="text-lg">{{ $book->author }}</span>
                 </div>
 
                 <form action="/books/update/{{ $book->id }}" method="POST">
@@ -65,7 +65,7 @@
 
         {{-- modal --}}
         <div class="modal bg-black/50 fixed inset-0 flex justify-center items-center hidden">
-            <div class="w-full max-w-sm rounded-md bg-[#EBD3F8] p-[1.5rem] mt-[1rem]">
+            <div class="w-full md:max-w-sm max-w-xs rounded-md bg-[#EBD3F8] p-[1.5rem] mt-[1rem]">
                 <h3 class="font-bold text-2xl">Add Log</h3>
 
                 {{-- Form Update --}}
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="flex flex-col space-y-[0.5rem]">
-                        <label for="page_number" class="font-semibold">Total Page</label>
+                        <label for="page_number" class="font-semibold">Page Number</label>
                         <input type="number" name="page_number" class="w-full bg-white rounded-md p-[0.5rem]"
                             placeholder="Example: 100" required>
                     </div>

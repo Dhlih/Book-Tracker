@@ -16,13 +16,21 @@ class BooksController extends Controller
         $user_id = Auth::id();
         $books = Book::where("user_id", $user_id)->get();
 
+        foreach ($books as $book) {
+            $book->progress = $this->get_progress($book);
+        }
+
         return view("books.index", ["books" => $books]);
     }
 
-    public function show_books_finished(Request $request)
+    public function show_books_finished()
     {
         $user_id = Auth::id();
         $books = Book::where("user_id", $user_id)->where("status", "finished")->get();
+
+        foreach ($books as $book) {
+            $book->progress = $this->get_progress($book);
+        }
 
         return view("books.finished", ["books" => $books]);
     }
@@ -31,6 +39,10 @@ class BooksController extends Controller
     {
         $user_id = Auth::id();
         $books = Book::where("user_id", $user_id)->where("status", "reading")->get();
+
+        foreach ($books as $book) {
+            $book->progress = $this->get_progress($book);
+        }
 
         return view("books.reading", ["books" => $books]);
     }
@@ -43,6 +55,7 @@ class BooksController extends Controller
     public function show_update_book($id)
     {
         $book = Book::with('logs')->findOrFail($id);
+
         return view('books.update', compact('book'));
     }
 
@@ -138,5 +151,13 @@ class BooksController extends Controller
         }, $limited_items);
 
         return response()->json($books);
+    }
+
+    public function get_progress($book)
+    {
+        $current_page = $book->logs[0]->page_number ?? 0;
+        $total_page = $book->total_page;
+
+        return round(($current_page / $total_page) * 100) . '%';
     }
 }

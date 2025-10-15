@@ -5,7 +5,7 @@
             @csrf
             <div class="flex flex-col space-y-[0.5rem]">
                 <label for="cover" class="font-semibold">Cover</label>
-                <img class="cover w-full h-[350px] object-cover" src="" alt="">
+                <img class="cover w-full h-[350px] object-cover hidden" src="" alt="">
                 <input type="hidden" name="cover" class="cover-input">
             </div>
 
@@ -88,6 +88,8 @@
                             document.querySelector("input[name='author']").value =
                                 book.author;
                             document.querySelector("img").src = book.cover ?? '';
+                            document.querySelector("img").classList.remove(
+                                "hidden");
                             document.querySelector(".cover-input").value = book
                                 .cover ?? '';
                             document.querySelector(".total-page").value = book

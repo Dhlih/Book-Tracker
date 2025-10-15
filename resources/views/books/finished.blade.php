@@ -4,7 +4,7 @@
     <form action="/books/finished/search" method="GET">
         <div class="flex items-center space-x-[1rem]">
             <input type="text" name="q"
-                class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none"
+                class="w-full md:max-w-[280px] bg-[#AD49E1] rounded-md p-[0.4rem] px-[0.8rem] text-white outline-none "
                 placeholder="Search book...">
             <button class="bg-[#EBD3F8] hover:bg-[#EBD3F8]/70 rounded-md py-[0.4rem] px-[0.8rem] cursor-pointer"
                 type="submit">
@@ -27,23 +27,27 @@
         @isset($books)
             @foreach ($books as $book)
                 <div class="w-full md:max-w-[280px]  rounded-md p-[1rem] shadow-lg">
-                    <img src={{ $book->cover }} class="object-cover w-full md:h-[200px] h-[320px] rounded-md"
-                        alt="Harry Potter">
+                    <img src={{ $book->cover }} class="object-cover w-full h-[250px]  rounded-md" alt="Harry Potter">
                     <div class="flex items-center justify-between mt-[1rem]">
-                        <h2 class="text-xl font-bold">{{ $book->title }}</h2>
-                        <a href="">
+                        <a href="/books/update/{{ $book->id }}">
+                            <h2 class="text-xl font-bold hover:text-gray-500">{{ substr($book->title, 0, 24) }}...</h2>
+
+                        </a>
+                        <a href="/books/finished">
                             <button
-                                class="bg-[#EBD3F8] p-[0.4rem] rounded-md text-sm capitalize">{{ $book->status }}</button>
+                                class="{{ $book->status == 'finished' ? 'bg-[#4ADE80]' : 'bg-[#C084FC]' }} p-[0.4rem] rounded-md text-sm capitalize cursor-pointer hover:text-gray-500">{{ $book->status }}</button>
                         </a>
                     </div>
                     <p class="text-md  text-gray-500">{{ $book->author }}</p>
                     <div class="mt-[0.3rem]">
                         <div class="flex items-center justify-between">
-                            <p class="text-sm text-gray-500 mt-1">{{ $book->total_page }}</p>
-                            <p class="text-sm text-gray-500 mt-1">30%</p>
+                            <p class="text-sm text-gray-500 mt-1">{{ $book->logs[0]->page_number ?? 0 }} /
+                                {{ $book->total_page }}
+                            </p>
+                            <p class="text-sm text-gray-500 mt-1">{{ $book->progress }}</p>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
-                            <div class="bg-purple-600 h-2 rounded-full" style="width: 33%"></div>
+                            <div class="bg-purple-600 h-2 rounded-full" style="width: {{ $book->progress }}"></div>
                         </div>
                     </div>
                     <p class="text-sm mt-[0.5rem] text-gray-500">{{ $book->last_read_at }}</p>

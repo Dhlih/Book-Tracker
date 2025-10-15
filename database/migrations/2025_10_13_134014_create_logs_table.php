@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained("books");
             $table->foreignId('book_id')->constrained("books");
             $table->integer('page_number')->nullable(); // halaman terakhir dibaca
             $table->integer('duration')->nullable(); // durasi baca (detik/menit)

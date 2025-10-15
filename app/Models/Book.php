@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Log;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
@@ -15,6 +16,6 @@ class Book extends Model
 
     public function logs()
     {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class)->orderBy('read_at', direction: 'desc');
     }
 }
